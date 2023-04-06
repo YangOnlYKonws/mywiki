@@ -3,6 +3,11 @@ site_name: 博阳的魔法藏书室
 repo_name: this repository
 repo_url: https://https://github.com/YangOnlYKonws/mywiki
 
+plugins:
+  - search:
+      separator: '[\s\u200b\-]'
+
+
 theme:
   name: 'material'
   language: zh
