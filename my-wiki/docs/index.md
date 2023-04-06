@@ -1,17 +1,11 @@
-# Welcome to MkDocs
+## 前言
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+这是一个个人使用的wiki库，包含一些问题的总结与解法
 
-## Commands
+有任何问题可以发邮件到我的邮箱15rorz@outlook.com
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## 注意事项
 
-## Project layout
+如果你对我的库中的任何问题或者解法有不同的理解，欢迎讨论并且指出我的错误，非常感谢
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+我不会在库中添加任何讨论区，毕竟这是个人网站，也不算博客
