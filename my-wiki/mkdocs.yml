@@ -5,6 +5,7 @@ repo_url: https://https://github.com/YangOnlYKonws/mywiki
 
 plugins:
   - search:
+      lang: ja
       separator: '[\s\u200b\-]'
 
 
@@ -34,5 +35,6 @@ nav:
   - 数据结构:
       - 数组排序: 数据结构/数组排序.md
       - 动态规划: 数据结构/动态规划.md
+      - Java: Java/Java贩卖机.md
   - 杂项:
       - mkdocs文件上传: 杂项/Mkdocs部署与上传.md
