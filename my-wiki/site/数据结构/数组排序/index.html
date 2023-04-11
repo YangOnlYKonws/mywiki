@@ -520,26 +520,25 @@
    -104 &lt;= nums[i] &lt;= 104</p>
 <p>分析：这个就是最典型的贪心，其实很多方法，有DP和贪心但是，最简洁的也最容易理解的还是单次遍历贪心</p>
 <p>代码：</p>
-<p>```c
-   int maxSubArray(int* nums, int numsSize){
-       int i,max=nums[0],sum=0;</p>
-<pre><code>   for(i=0;i&lt;numsSize;i++) //一次遍历
-   {
-       sum=sum+nums[i]; //数值替换
-       if(sum&lt;nums[i])
-       {
-           sum=nums[i]; //数值替换
-       }
-       if(max&lt;=sum)     //大小比较
-       {
-           max=sum;
-       }
-   }
+<pre><code class="language-C">int maxSubArray(int* nums, int numsSize){
+    int i,max=nums[0],sum=0;
 
-   return max;
+    for(i=0;i&lt;numsSize;i++)
+    {
+        sum=sum+nums[i];
+        if(sum&lt;nums[i])
+        {
+            sum=nums[i];
+        }
+        if(max&lt;=sum)
+        {
+            max=sum;
+        }
+    }
+
+    return max;
+}
 </code></pre>
-<p>}
-   ```</p>
 <ol>
 <li>买卖股票的最佳时机</li>
 </ol>
