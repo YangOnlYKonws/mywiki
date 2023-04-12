@@ -4,7 +4,7 @@
 
 最早开始的时候，我是想用多种==类==，多种==接口==，然后用上==继承==的方法来写这么一个东西，从而巩固我刚学的Java知识，现在这个==Part I==版本只能巩固基础语法，后续会推出==Part II==来实现我所说的多类，多借口，继承。
 
-```java
+```
 import java.util.Random;
 import java.util.Scanner;
 
