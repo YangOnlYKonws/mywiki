@@ -555,14 +555,16 @@
 <p><strong>示例 1：</strong></p>
 <p><img alt="img" src="https://assets.leetcode.com/uploads/2021/04/24/reshape1-grid.jpg" /></p>
 <blockquote>
-<p><code>输入：mat = [[1,2],[3,4]], r = 1, c = 4
-输出：[[1,2,3,4]]</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>输入：mat = [[1,2],[3,4]], r = 1, c = 4
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>输出：[[1,2,3,4]]
+</span></code></pre></div>
 </blockquote>
 <p><strong>示例 2：</strong></p>
 <p><img alt="img" src="https://assets.leetcode.com/uploads/2021/04/24/reshape2-grid.jpg" /></p>
 <blockquote>
-<p><code>输入：mat = [[1,2],[3,4]], r = 2, c = 4
-输出：[[1,2],[3,4]]</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>输入：mat = [[1,2],[3,4]], r = 2, c = 4
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>输出：[[1,2],[3,4]]
+</span></code></pre></div>
 </blockquote>
 <p><strong>提示：</strong></p>
 <ul>
@@ -573,38 +575,39 @@
 <li><code>1 &lt;= r, c &lt;= 300</code></li>
 </ul>
 <p><strong>代码：</strong></p>
-<p>```
-   int<strong> matrixReshape(int</strong> mat, int matSize, int<em> matColSize, int r, int c, int</em> returnSize, int<em><em> returnColumnSizes){
-       int i,j;
-       int m = matSize;
-       int n = matColSize[0];
-       if(m</em>n!=r</em>c)
-       {
-           <em>returnSize=matSize;
-           </em>returnColumnSizes=matColSize;
-           return mat;
-       }</p>
-<pre><code>   *returnSize = r;
-   *returnColumnSizes=malloc(sizeof(int)*r);
-   int** ans=malloc(sizeof(int*)*r);
-
-   for(i=0;i&lt;r;i++)
-   {
-       (*returnColumnSizes)[i]=c;
-       ans[i]=malloc(sizeof(int)*c);
-   }
-   for(j=0;j&lt;m*n;++j)
-   {
-       ans[j/c][j%c]=mat[j/n][j%n];//点睛之笔
-   }
-   return ans;
-</code></pre>
-<p>}
-   ```</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>int** matrixReshape(int** mat, int matSize, int* matColSize, 
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>int r, int c, int* returnSize, int** returnColumnSizes){
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    int i,j;
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    int m = matSize;
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    int n = matColSize[0];
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    if(m*n!=r*c)
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    {
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        *returnSize=matSize;
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        *returnColumnSizes=matColSize;
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        return mat;
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    }
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    *returnSize = r;
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    *returnColumnSizes=malloc(sizeof(int)*r);
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    int** ans=malloc(sizeof(int*)*r);
+</span><span id="__span-2-16"><a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+</span><span id="__span-2-17"><a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    for(i=0;i&lt;r;i++)
+</span><span id="__span-2-18"><a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    {
+</span><span id="__span-2-19"><a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        (*returnColumnSizes)[i]=c;
+</span><span id="__span-2-20"><a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        ans[i]=malloc(sizeof(int)*c);
+</span><span id="__span-2-21"><a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    }
+</span><span id="__span-2-22"><a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    for(j=0;j&lt;m*n;++j)
+</span><span id="__span-2-23"><a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>    {
+</span><span id="__span-2-24"><a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>        ans[j/c][j%c]=mat[j/n][j%n];//点睛之笔
+</span><span id="__span-2-25"><a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>    }
+</span><span id="__span-2-26"><a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    return ans;
+</span><span id="__span-2-27"><a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>}
+</span></code></pre></div>
 <p>最开始部分不做考虑，m<em>n!=r</em>c这一个步骤仅仅是为了题意</p>
-<p><code>*returnSize = r;
-   *returnColumnSizes=malloc(sizeof(int)*r);
-   int** ans=malloc(sizeof(int*)*r);</code></p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>*returnSize = r;
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>*returnColumnSizes=malloc(sizeof(int)*r);
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>int** ans=malloc(sizeof(int*)*r);
+</span></code></pre></div>
 <p>这一块是新矩阵的初始化，这里有两个题目给的指针变量和一个我自己设立的二维数组指针，第一个returnSize可以通俗的认为是矩阵的长，在定义矩阵长的时候不需要分配空间，一个矩阵的定义可以认为是先定一边，然后利用积分乘该边，最后形成一个矩形，在分配矩形空间也是这种想法，上面这行代码就可以体现，returnSize定了之后，我们有一个具体的值，那么在分配每一行的空间的时候就可以按照我说的积分法一点一点分配，这就是第二行代码，</p>
 
 
