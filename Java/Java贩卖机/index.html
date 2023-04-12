@@ -529,55 +529,59 @@
 <h2 id="java">Java贩卖机</h2>
 <p>为什么我要写一个贩卖机呢，第一目的是理解Java与C的不同区别，虽然我写的这个没有用很多的类定义，也没用到接口，但是我的想法是，这何尝不是一种对话的尝试，我在上课的时候学到这个地方，老师当时举的是贩卖机的例子，我首先想到的是RPG游戏的商人，然后是商人的折扣功能，然后是对话，因为这个可拓展功能可以实现多种方面串联起来，引起多种方面的结果。</p>
 <p>最早开始的时候，我是想用多种==类==，多种==接口==，然后用上==继承==的方法来写这么一个东西，从而巩固我刚学的Java知识，现在这个==Part I==版本只能巩固基础语法，后续会推出==Part II==来实现我所说的多类，多借口，继承。</p>
-<pre><code>import java.util.Random;
-import java.util.Scanner;
-
-public class potOfGreed {
-    public static final double[] prince = {15.5,20.4,20.9};
-    public static final String[] goodsName = {&quot;治疗药水&quot;,&quot;魔力药水&quot;,&quot;传送卷轴&quot;};
-    public static final int goodsKind = prince.length;
-    public static final double discountMax = 1.0;
-    public static final double discountMin = 0.0;
-    public static final Random random = new Random(); //1.基础点
-
-    public static void main(String[] args) {
-        double discount = randomDiscount(); //2.基础点
-        System.out.printf(&quot;强欲之壶！小子！今日折扣是%.1f\n&quot;, discount);
-
-        Scanner scanner = new Scanner(System.in); //3.基础点
-        while(true) {
-            System.out.println(&quot;你想要我给你变啥出来：&quot;);
-            for(int i = 0;i &lt; goodsKind;i++) {
-                double princeDis = prince[i] * (1-discount);
-                System.out.printf(&quot;序号：%d,名称：%s,价格：%.1f\n&quot;, i+1, goodsName[i], princeDis); //4.基础点
-            }
-            System.out.println(&quot;0. 退出&quot;);
-
-            int choice = scanner.nextInt();
-            if(choice == 0) {
-                break;
-            }
-            else if(choice &lt; 1 || choice &gt; 3) {
-                System.out.println(&quot;你当强欲之壶是傻逼吗，选个没有的&quot;);
-                continue;
-            }
-
-            System.out.printf(&quot;快点给我%.1f币！强欲之壶不可能凭空变出来！\n&quot;,prince[choice-1] * (1-discount));
-            double coins = scanner.nextDouble();
-            if(coins &lt; prince[choice-1] * (1-discount) &amp;&amp; coins != prince[choice-1] * (1-discount)) { 
-                System.out.println(&quot;你是想空手套白狼吗，给我稍微认真点阿！&quot;);
-                continue;
-            }
-
-            double charge = coins - prince[choice-1] * (1-discount);
-            System.out.printf(&quot;找你%.1f\n&quot;,charge);
-        }
-    }
-    private static double randomDiscount() { //5.基础点
-        return discountMin + (discountMax - discountMin) * random.nextDouble();
-    }
-}
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>import java.util.Random;
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>import java.util.Scanner;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>public class potOfGreed {
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    public static final double[] prince = {15.5,20.4,20.9};
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    public static final String[] goodsName = {&quot;治疗药水&quot;,&quot;魔力药水&quot;,&quot;传送卷轴&quot;};
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    public static final int goodsKind = prince.length;
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    public static final double discountMax = 1.0;
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    public static final double discountMin = 0.0;
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    public static final Random random = new Random(); //1.基础点
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    public static void main(String[] args) {
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        double discount = randomDiscount(); //2.基础点
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        System.out.printf(&quot;强欲之壶！小子！今日折扣是%.1f\n&quot;, discount);
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        Scanner scanner = new Scanner(System.in); //3.基础点
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        while(true) {
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            System.out.println(&quot;你想要我给你变啥出来：&quot;);
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>            for(int i = 0;i &lt; goodsKind;i++) {
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>                double princeDis = prince[i] * (1-discount);
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>                System.out.printf(&quot;序号：%d,名称：%s,价格：%.1f\n&quot;, i+1, 
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>                goodsName[i], princeDis); //4.基础点
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>            }
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>            System.out.println(&quot;0. 退出&quot;);
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>            int choice = scanner.nextInt();
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>            if(choice == 0) {
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>                break;
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>            }
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            else if(choice &lt; 1 || choice &gt; 3) {
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>                System.out.println(&quot;你当强欲之壶是傻逼吗，选个没有的&quot;);
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>                continue;
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>            }
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>            System.out.printf(&quot;快点给我%.1f币！强欲之壶不可能凭空变出来！\n&quot;,
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>            prince[choice-1] * (1-discount));
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>            double coins = scanner.nextDouble();
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>            if(coins &lt; prince[choice-1] * (1-discount) &amp;&amp; coins != 
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>            prince[choice-1] * (1-discount)) { 
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>                System.out.println(&quot;你是想空手套白狼吗，给我稍微认真点阿！&quot;);
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>                continue;
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>            }
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>            double charge = coins - prince[choice-1] * (1-discount);
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>            System.out.printf(&quot;找你%.1f\n&quot;,charge);
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>        }
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    }
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    private static double randomDiscount() { //5.基础点
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>        return discountMin + (discountMax - discountMin) * 
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>        random.nextDouble();
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>    }
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>}
+</span></code></pre></div>
 <ol>
 <li>基础点：随机赋值的运用</li>
 <li>基础点：构造函数的运用</li>
