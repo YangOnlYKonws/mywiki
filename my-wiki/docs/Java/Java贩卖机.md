@@ -25,7 +25,8 @@ public class potOfGreed {
             System.out.println("你想要我给你变啥出来：");
             for(int i = 0;i < goodsKind;i++) {
                 double princeDis = prince[i] * (1-discount);
-                System.out.printf("序号：%d,名称：%s,价格：%.1f\n", i+1, goodsName[i], princeDis); //4.基础点
+                System.out.printf("序号：%d,名称：%s,价格：%.1f\n", i+1, 
+                goodsName[i], princeDis); //4.基础点
             }
             System.out.println("0. 退出");
 
@@ -38,9 +39,11 @@ public class potOfGreed {
                 continue;
             }
 
-            System.out.printf("快点给我%.1f币！强欲之壶不可能凭空变出来！\n",prince[choice-1] * (1-discount));
+            System.out.printf("快点给我%.1f币！强欲之壶不可能凭空变出来！\n",
+            prince[choice-1] * (1-discount));
             double coins = scanner.nextDouble();
-            if(coins < prince[choice-1] * (1-discount) && coins != prince[choice-1] * (1-discount)) { 
+            if(coins < prince[choice-1] * (1-discount) && coins != 
+            prince[choice-1] * (1-discount)) { 
                 System.out.println("你是想空手套白狼吗，给我稍微认真点阿！");
                 continue;
             }
@@ -50,7 +53,8 @@ public class potOfGreed {
         }
     }
     private static double randomDiscount() { //5.基础点
-        return discountMin + (discountMax - discountMin) * random.nextDouble();
+        return discountMin + (discountMax - discountMin) * 
+        random.nextDouble();
     }
 }
 ```

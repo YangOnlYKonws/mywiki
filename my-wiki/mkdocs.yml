@@ -30,6 +30,7 @@ theme:
       toggle:
         icon: material/weather-night
         name: 切换到明色
+
 nav:
   - 首页: index.md
   - 算法:
@@ -40,3 +41,12 @@ nav:
       - 小项目（练手）: Java/Java贩卖机.md
   - 杂项:
       - mkdocs文件上传: 杂项/Mkdocs部署与上传.md
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
