@@ -4,6 +4,7 @@ repo_name: this repository
 repo_url: https://https://github.com/YangOnlYKonws/mywiki
 
 plugins:
+  - glightbox
   - search:
       lang: ja
       separator: '[\s\u200b\-]'
